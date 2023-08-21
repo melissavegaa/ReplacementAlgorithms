@@ -1,0 +1,21 @@
+Please elaborate how you implement your FIFO and LRU replacement algorithm.
+You need to explain your design, not just paste source code here ...
+
+For the FIFO replacement algorithm, we first traverse the pages and if the
+current set of pages holds less pages than the number of pages in the memory,
+we insert pages one by one until the size of memory is full, keep pages in the
+queue to perform FIFO, and increment the page faults. Additionally, if the current
+page is present in the current set of pages, we do not need to do nothing. But if
+we encounter a new page, we remove the first one from the queue and replace the slot
+with the current page. Once this is done, we store it and increment the number of
+page faults. Lastly, we return the total number of page faults.
+
+For the LRU replacement algorithm, just like the FIFO, we first traverse the pages
+and if the current set of pages holds less pages than the number of pages in the memory,
+we insert pages one by one until the size of the memory is full, keep track of them
+using an index and increment the page faults. If the current page is already present
+in the current set of pages in the memory, we do not need to do nothing, we simply ignore it.
+But if we encounter a new page, we need to find the page that was least recently used.
+Once we find the page with minimum index, we replace it with the current page, increment
+the number of page faults, and update the index of the current index. Lastly we return
+the total number of page faults.
